@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-ink: #0A0A0A;
+  --color-surface: #FFFFFF;
+  --color-canvas: #F5F5F4;
+  --color-border-custom: #E7E5E4;
+  --color-text-main: #1C1917;
+  --color-text-secondary: #78716C;
+  --color-amber-accent: #F59E0B;
+  --color-amber-hover: #D97706;
+  --color-whatsapp: #16A34A;
+  --color-whatsapp-hover: #15803D;
+  --font-sans: var(--font-plus-jakarta-sans), system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Custom interactive transitions */
+.card-hover {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
