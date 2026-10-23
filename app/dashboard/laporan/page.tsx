@@ -667,22 +667,22 @@ export default function FinancialReportPage() {
                     const profit = s.hargaTerjual - s.hargaBeli;
                     return (
                       <tr key={s.id} className="hover:bg-stone-50/70">
-                        <td className="py-3 px-4 text-stone-500 font-mono text-[11px]">
+                        <td className="py-3 px-4 text-stone-500 font-mono text-[11px] whitespace-nowrap">
                           {formatDate(s.soldAt)}
                         </td>
                         <td className="py-3 px-3 font-bold text-stone-900">
                           {s.namaProduk}
                         </td>
-                        <td className="py-3 px-3 text-stone-500 font-mono">
+                        <td className="py-3 px-3 text-stone-500 font-mono whitespace-nowrap">
                           {formatRupiah(s.hargaBeli)}
                         </td>
-                        <td className="py-3 px-3 font-bold text-stone-900">
+                        <td className="py-3 px-3 font-bold text-stone-900 whitespace-nowrap">
                           {formatRupiah(s.hargaTerjual)}
                         </td>
-                        <td className="py-3 px-3 font-bold text-emerald-600 font-mono">
+                        <td className="py-3 px-3 font-bold text-emerald-600 font-mono whitespace-nowrap">
                           +{formatRupiah(profit)}
                         </td>
-                        <td className="py-3 px-4 text-right text-stone-600 font-medium">
+                        <td className="py-3 px-4 text-right text-stone-600 font-medium whitespace-nowrap">
                           {s.soldBy}
                         </td>
                       </tr>

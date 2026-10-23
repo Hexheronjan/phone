@@ -109,7 +109,7 @@ export default function ProductCard({ product, onOpenTradeIn }: ProductCardProps
         </div>
 
         {/* Content Details */}
-        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+        <div className="p-3.5 sm:p-5 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
           <div>
             {/* Brand Pill + Storage Tag */}
             <div className="flex items-center justify-between gap-2 mb-2">
@@ -122,32 +122,32 @@ export default function ProductCard({ product, onOpenTradeIn }: ProductCardProps
             </div>
 
             {/* Title: Model Name */}
-            <h3 className="font-extrabold text-stone-900 text-base sm:text-lg leading-snug line-clamp-2 group-hover:text-[#D97706] transition-colors">
+            <h3 className="font-extrabold text-stone-900 text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-[#D97706] transition-colors">
               {product.tipe}
             </h3>
 
             {/* Price Box */}
-            <div className="mt-2.5 flex items-baseline gap-2">
-              <div className="text-xl sm:text-2xl font-black text-stone-950 tracking-tight">
+            <div className="mt-2 flex items-baseline gap-2">
+              <div className="text-lg sm:text-2xl font-black text-stone-950 tracking-tight">
                 {formatRupiah(product.hargaJual)}
               </div>
             </div>
 
             {/* Feature Pills */}
-            <div className="mt-3 pt-3 border-t border-stone-100 flex flex-wrap items-center gap-2 text-xs">
+            <div className="mt-2.5 pt-2.5 border-t border-stone-100 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
               {product.baterai !== null && product.baterai !== undefined ? (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-semibold text-[11px]">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-semibold text-[10px] sm:text-[11px]">
                   <BatteryMedium className="w-3.5 h-3.5" />
                   <span>BH {product.baterai}%</span>
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold text-[11px]">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-semibold text-[10px] sm:text-[11px]">
                   <Shield className="w-3.5 h-3.5" />
                   <span>Garansi Resmi</span>
                 </span>
               )}
 
-              <span className="inline-flex items-center gap-1 text-[11px] text-stone-500 font-medium truncate">
+              <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] text-stone-500 font-medium truncate">
                 <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
                 <span className="truncate">{product.garansi}</span>
               </span>
@@ -157,14 +157,14 @@ export default function ProductCard({ product, onOpenTradeIn }: ProductCardProps
       </Link>
 
       {/* Action Buttons */}
-      <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 grid grid-cols-2 gap-2">
+      <div className="px-3 pb-3.5 sm:px-5 sm:pb-5 pt-0 grid grid-cols-2 gap-1.5 sm:gap-2">
         {/* WhatsApp Button */}
         <button
           onClick={handleWhatsAppClick}
           aria-label={`Beli via WhatsApp ${product.brand} ${product.tipe}`}
-          className="h-11 px-3 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-sm shadow-emerald-600/20 transition-all active:scale-95"
+          className="h-10 sm:h-11 px-2 sm:px-3 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-[11px] sm:text-xs flex items-center justify-center gap-1 sm:gap-1.5 shadow-sm shadow-emerald-600/20 transition-all active:scale-95"
         >
-          <MessageCircle className="w-4 h-4 fill-current shrink-0" />
+          <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current shrink-0" />
           <span className="truncate">Chat WA</span>
         </button>
 
@@ -172,9 +172,9 @@ export default function ProductCard({ product, onOpenTradeIn }: ProductCardProps
         <button
           onClick={handleTradeInClick}
           aria-label={`Tukar Tambah ${product.brand} ${product.tipe}`}
-          className="h-11 px-3 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-xs transition-all active:scale-95"
+          className="h-10 sm:h-11 px-2 sm:px-3 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-[11px] sm:text-xs flex items-center justify-center gap-1 sm:gap-1.5 shadow-xs transition-all active:scale-95"
         >
-          <RefreshCw className="w-3.5 h-3.5 shrink-0 text-amber-400" />
+          <RefreshCw className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 text-amber-400" />
           <span className="truncate">Tukar HP</span>
         </button>
       </div>

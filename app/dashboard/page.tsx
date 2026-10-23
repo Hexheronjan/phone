@@ -311,12 +311,12 @@ export default function DashboardProductsPage() {
                       </td>
 
                       {/* Harga Pajang */}
-                      <td className="py-3.5 px-3 font-bold text-stone-900 text-sm">
+                      <td className="py-3.5 px-3 font-bold text-stone-900 text-sm whitespace-nowrap">
                         {formatRupiah(p.hargaJual)}
                       </td>
 
                       {/* Batas Nego (Net) - Toko Only (Operator & Admin) */}
-                      <td className="py-3.5 px-3">
+                      <td className="py-3.5 px-3 whitespace-nowrap">
                         {p.hargaMinNego ? (
                           <div className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-amber-50 border border-amber-200/80 font-mono text-xs font-semibold text-amber-800">
                             <Tag className="w-3 h-3 text-amber-600" />
@@ -329,7 +329,7 @@ export default function DashboardProductsPage() {
 
                       {/* Admin Only: Harga Beli */}
                       {isAdmin && (
-                        <td className="py-3.5 px-3 text-stone-600 font-mono text-xs">
+                        <td className="py-3.5 px-3 text-stone-600 font-mono text-xs whitespace-nowrap">
                           {p.hargaBeli !== undefined
                             ? formatRupiah(p.hargaBeli)
                             : "-"}
@@ -338,13 +338,13 @@ export default function DashboardProductsPage() {
 
                       {/* Admin Only: Margin */}
                       {isAdmin && (
-                        <td className="py-3.5 px-3 font-bold text-emerald-600 font-mono text-xs">
+                        <td className="py-3.5 px-3 font-bold text-emerald-600 font-mono text-xs whitespace-nowrap">
                           {formatRupiah(margin)}
                         </td>
                       )}
 
                       {/* Stok */}
-                      <td className="py-3.5 px-3">
+                      <td className="py-3.5 px-3 whitespace-nowrap">
                         {p.stok === 0 ? (
                           <span className="px-2 py-1 rounded-lg bg-rose-50 text-rose-700 font-bold text-[11px]">
                             Habis
@@ -361,7 +361,7 @@ export default function DashboardProductsPage() {
                       </td>
 
                       {/* Actions */}
-                      <td className="py-3.5 px-4 text-right">
+                      <td className="py-3.5 px-4 text-right whitespace-nowrap">
                         <div className="flex items-center justify-end gap-1.5">
                           {/* Tandai Terjual Button */}
                           <button

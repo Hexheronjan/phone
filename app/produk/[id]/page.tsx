@@ -127,7 +127,7 @@ export default function ProductDetailPage() {
     <div className="min-h-screen flex flex-col bg-[#F5F5F4]">
       <Header />
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-24 sm:py-8 w-full">
         {/* Breadcrumb / Back Link */}
         <div className="mb-6 flex items-center justify-between">
           <Link
@@ -361,7 +361,9 @@ export default function ProductDetailPage() {
         onClose={() => setIsTradeInOpen(false)}
       />
 
-      <FloatingWhatsApp />
+      <div className="hidden sm:block">
+        <FloatingWhatsApp />
+      </div>
       <Footer />
     </div>
   );

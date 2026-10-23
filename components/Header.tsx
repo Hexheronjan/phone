@@ -1,13 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Smartphone, Menu, X, Search, Wrench } from "lucide-react";
+import { getCurrentUser, User } from "@/lib/db";
+import { Smartphone, Menu, X, Search, Wrench, LayoutDashboard } from "lucide-react";
 
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const user = getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, [pathname]);
 
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true;
@@ -21,12 +30,12 @@ export default function Header() {
         {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 group transition-transform active:scale-95"
+          className="flex items-center gap-2.5 group transition-transform active:scale-95"
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center text-white shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
             <Smartphone className="w-5 h-5 text-stone-950 stroke-[2.5]" />
           </div>
-          <span className="font-bold text-lg sm:text-xl tracking-tight text-white">
+          <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white">
             Ponorogo <span className="text-[#F59E0B]">Phone</span>
           </span>
         </Link>
@@ -40,7 +49,7 @@ export default function Header() {
             }`}
           >
             <Search className="w-4 h-4" />
-            <span>Katalog</span>
+            <span>Katalog HP</span>
             {isActive("/") && (
               <span className="absolute bottom-[-18px] left-0 right-0 h-[2.5px] bg-[#F59E0B] rounded-full" />
             )}
@@ -60,6 +69,17 @@ export default function Header() {
               <span className="absolute bottom-[-18px] left-0 right-0 h-[2.5px] bg-[#F59E0B] rounded-full" />
             )}
           </Link>
+
+          {/* Quick link to Dashboard only if staff is currently logged in */}
+          {currentUser && (
+            <Link
+              href="/dashboard"
+              className="px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:bg-amber-500/30 text-xs font-bold flex items-center gap-1.5 transition-all"
+            >
+              <LayoutDashboard className="w-3.5 h-3.5 text-amber-400" />
+              <span>Dashboard ({currentUser.role})</span>
+            </Link>
+          )}
         </nav>
 
         {/* Mobile Hamburger Button */}
@@ -74,7 +94,7 @@ export default function Header() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-[#0A0A0A] px-4 pt-3 pb-6 flex flex-col gap-3 animate-in fade-in slide-in-from-top-2">
+        <div className="md:hidden border-t border-white/10 bg-[#0A0A0A] px-4 pt-3 pb-6 flex flex-col gap-2.5 animate-in fade-in slide-in-from-top-2">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -100,6 +120,18 @@ export default function Header() {
             <Wrench className="w-4 h-4" />
             <span>Cek Status Servis</span>
           </Link>
+
+          {/* Mobile staff shortcut if logged in */}
+          {currentUser && (
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-3 rounded-xl text-sm font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-3"
+            >
+              <LayoutDashboard className="w-4 h-4 text-amber-400" />
+              <span>Kembali ke Dashboard ({currentUser.role})</span>
+            </Link>
+          )}
         </div>
       )}
     </header>
